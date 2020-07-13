@@ -1,0 +1,85 @@
+{
+  "name": "angular-atomic-starter",
+  "version": "0.0.0-development",
+  "scripts": {
+    "ng": "ng",
+    "copy:readme": "copyfiles ./README.md ./dist/ng-atomic",
+    "build:lib": "npm run copy:readme && ng build ng-atomic",
+    "test:lib-atomic": "ng test ng-atomic --code-coverage --watch=false",
+    "report-atomic:lib": "cat ./coverage/ng-atomic/lcov.info | codecov",
+    "format:check": "prettier --list-different 'projects/**/*.ts'",
+    "format:write": "prettier --write 'projects/**/*.ts'",
+    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+    "semantic-release": "semantic-release"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "projects/**/*.ts": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "~9.0.3",
+    "@angular/common": "~9.0.3",
+    "@angular/compiler": "~9.0.3",
+    "@angular/core": "~9.0.3",
+    "@angular/forms": "~9.0.3",
+    "@angular/platform-browser": "~9.0.3",
+    "@angular/platform-browser-dynamic": "~9.0.3",
+    "@angular/router": "~9.0.3",
+    "rxjs": "~6.5.4",
+    "tslib": "^1.10.0",
+    "zone.js": "~0.10.2"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.900.7",
+    "@angular-devkit/build-ng-packagr": "~0.900.7",
+    "@angular/cli": "~9.0.4",
+    "@angular/compiler-cli": "~9.0.3",
+    "@angular/language-service": "~9.0.3",
+    "@commitlint/cli": "^9.1.1",
+    "@commitlint/config-conventional": "^9.1.1",
+    "@commitlint/prompt": "^9.1.1",
+    "@semantic-release/exec": "^5.0.0",
+    "@types/jasmine": "~3.5.0",
+    "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
+    "codecov": "^3.7.0",
+    "codelyzer": "^5.1.2",
+    "copyfiles": "^2.3.0",
+    "husky": "^4.2.5",
+    "jasmine-core": "~3.5.0",
+    "jasmine-spec-reporter": "~4.2.1",
+    "karma": "~4.3.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage-istanbul-reporter": "~2.1.0",
+    "karma-jasmine": "~2.0.1",
+    "karma-jasmine-html-reporter": "^1.4.2",
+    "lint-staged": "^10.2.11",
+    "ng-packagr": "^9.0.0",
+    "prettier": "^2.0.5",
+    "protractor": "~5.4.3",
+    "ts-node": "~8.3.0",
+    "tslint": "~5.18.0",
+    "typescript": "~3.7.5",
+    "semantic-release": "^17.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gespenstt/angular-atomic-starter.git"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  }
+}
